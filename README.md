@@ -81,12 +81,7 @@ src/
   ```
 
 ### 2. Serverless Functions  
-- Functions live in `/netlify/functions`.  
-- Example (Node.js):  
-  ```ts
-  exports.handler = async (event) => {
-    return { statusCode: 200, body: JSON.stringify({ data: "Hello" }) };
-  };
+Functions live in `/netlify/functions`.  
   ```
 - Test locally:  
   ```bash
@@ -101,10 +96,8 @@ Embed videos with:
 import ReactPlayer from "react-player/youtube";
 
 <ReactPlayer 
-  url="https://youtu.be/..." 
-  controls 
-  width="100%"
-  height="500px"
+  url="https://youtu.be/..."
+  ...
 />
 ```
 
@@ -114,7 +107,6 @@ import ReactPlayer from "react-player/youtube";
 
 ### Optimizations  
 - **Code splitting** (React.lazy + Suspense).  
-- **Lazy-load images** (`loading="lazy"`).  
 - **Preconnect to CDNs** (Google Fonts, YouTube).  
 
 ### SEO  
@@ -125,7 +117,7 @@ import ReactPlayer from "react-player/youtube";
 ---
 
 ## 🚀 Deployment  
-[Permalink](https://incandescent-cuchufli-19c1ae.netlify.app/contact) 
+[Permalink](https://incandescent-cuchufli-19c1ae.netlify.app) 
 
 ---
 

@@ -1,0 +1,20 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Tula",
+			"country": {
+				"code": "RU",
+				"name": "Russia"
+			},
+			"subdivision": {
+				"code": "TUL",
+				"name": "Tula Oblast"
+			},
+			"timezone": "Europe/Moscow",
+			"latitude": 54.2047,
+			"longitude": 37.6096,
+			"postalCode": "300027"
+		},
+		"timestamp": 1746584731059
+	}
+}

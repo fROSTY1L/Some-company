@@ -1,12 +1,12 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter } from "react-router-dom";
 
-import { AppLayout } from '../AppLayout';
-import HomePage from '../pages/HomePage';
-import ContactUsPage from '../pages/ContactUsPage';
+import { AppLayout } from "../AppLayout";
+import HomePage from "../pages/HomePage";
+import ContactUsPage from "../pages/ContactUsPage";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <AppLayout />,
     children: [
       {
@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: 'contact',
+        path: "contact",
         element: <ContactUsPage />,
       },
     ],

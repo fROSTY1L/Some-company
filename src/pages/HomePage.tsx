@@ -10,7 +10,7 @@ const Home = () => {
       <CardsSection />
       <ContactSection />
     </Layout>
-  )
-}
+  );
+};
 
 export default Home;

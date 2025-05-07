@@ -1,7 +1,14 @@
-import { Card, Col, Layout, Row, Typography } from "antd";
+import { Card, Col, Layout, Row, Typography, Skeleton } from "antd";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import ContactUsButton from "../../../shared/components/ContactUsButton";
 
+// Lazy-loaded Card component
+const LazyCard = lazy(() => import("./LazyCard"));
+
 const CardsSection = () => {
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   const cardsData = [
     {
       title: "Title",
@@ -35,6 +42,31 @@ const CardsSection = () => {
     },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute("data-index"));
+            setVisibleCards((prev) => [...prev, index]);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const setCardRef = (el: HTMLDivElement | null, index: number) => {
+    cardRefs.current[index] = el;
+  };
+
   return (
     <Layout style={{ background: "#FFFFFF" }}>
       <Layout.Content
@@ -53,15 +85,32 @@ const CardsSection = () => {
             width: "100%",
           }}
         >
-          Also very important title
+          Simple Cards Section
         </Typography.Title>
 
         <Row gutter={[24, 24]}>
           {cardsData.map((card, index) => (
-            <Col key={index} xs={24} sm={12} md={8}>
-              <Card title={card.title} hoverable style={{ height: "100%" }}>
-                {card.content}
-              </Card>
+            <Col
+              key={index}
+              xs={24}
+              sm={12}
+              md={8}
+              ref={(el) => setCardRef(el, index)}
+              data-index={index}
+            >
+              {visibleCards.includes(index) ? (
+                <Suspense
+                  fallback={
+                    <Card loading style={{ height: 200 }}>
+                      <Skeleton active />
+                    </Card>
+                  }
+                >
+                  <LazyCard title={card.title} content={card.content} />
+                </Suspense>
+              ) : (
+                <div style={{ height: 200 }} /> // Placeholder
+              )}
             </Col>
           ))}
         </Row>

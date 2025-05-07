@@ -52,14 +52,12 @@ yarn build
 
 ```
 src/
-├── app/                  # App-wide config (router, store, styles)
-├── processes/           # High-level business processes (optional)
-├── pages/               # Page components (Next.js-like routing)
+├── app/                 # App-wide config
+├── pages/               # Page components
 ├── widgets/             # Reusable complex UI blocks
-├── features/            # Feature-specific logic (auth, cart, etc.)
-├── entities/            # Business entities (User, Product, etc.)
+├── features/            # Feature-specific logic
 ├── shared/              # Shared utilities, UI components, styles
-└── index.tsx            # Entry point
+└── main.tsx             # Entry point
 ```
 
 ---
@@ -67,29 +65,8 @@ src/
 ## 🎨 Styling  
 
 ### Global Styles  
-- Uses **`styled-components`** with a global theme provider.  
-- Theme variables (`colors`, `breakpoints`) are defined in `app/styles/theme.ts`.  
+- Uses **`styled-components`** with a global theme provider.   
 - Global styles (CSS reset, fonts) in `app/styles/global.ts`.  
-
-### Ant Design Customization  
-Override Ant Design theme in `vite.config.ts` (or `craco.config.js` for CRA):  
-```ts
-import { theme } from "antd";  
-
-export default defineConfig({  
-  css: {  
-    preprocessorOptions: {  
-      less: {  
-        modifyVars: {  
-          "primary-color": "#1890ff",  
-          "border-radius-base": "4px",  
-        },  
-        javascriptEnabled: true,  
-      },  
-    },  
-  },  
-});  
-```
 
 ---
 
@@ -106,7 +83,7 @@ export default defineConfig({
 ### 2. Serverless Functions  
 - Functions live in `/netlify/functions`.  
 - Example (Node.js):  
-  ```js
+  ```ts
   exports.handler = async (event) => {
     return { statusCode: 200, body: JSON.stringify({ data: "Hello" }) };
   };
@@ -124,7 +101,7 @@ Embed videos with:
 import ReactPlayer from "react-player/youtube";
 
 <ReactPlayer 
-  url="https://youtu.be/xyz" 
+  url="https://youtu.be/..." 
   controls 
   width="100%"
   height="500px"
@@ -148,10 +125,7 @@ import ReactPlayer from "react-player/youtube";
 ---
 
 ## 🚀 Deployment  
-1. Push to GitHub/GitLab.  
-2. Connect repo to [Netlify](https://www.netlify.com/).  
-3. Set build command: `npm run build`.  
-4. Deploy!  
+[Permalink](https://incandescent-cuchufli-19c1ae.netlify.app/contact) 
 
 ---
 

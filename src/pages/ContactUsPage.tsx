@@ -1,10 +1,16 @@
 import { Layout } from "antd";
 import ContactForm from "../features/contactForm";
+import { SEO } from "../app/SEO";
 
 const { Content } = Layout;
 
 const ContactUsPage = () => {
   return (
+    <>
+    <SEO
+        title="Contact form"
+        description="Contact us via the form"
+      />
     <Content
       style={{
         flex: 1,
@@ -18,6 +24,7 @@ const ContactUsPage = () => {
         <ContactForm />
       </div>
     </Content>
+    </>
   );
 };
 
